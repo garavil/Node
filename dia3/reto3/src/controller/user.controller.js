@@ -6,28 +6,37 @@ let book4 = new Book("Verbolario", "blanda", "Rodrigo Cortés", 19.85, "https://
 
 let books = [book1, book2, book3, book4]
 
-function getBook(req, res){
+// function getBook(req, res){
+//     let respuesta;
+//     if( books != null){
+//         if(req.query.id != undefined){
+//             let i = 0;
+//             while(i < books.length && req.query.id != books[i].id_book){
+//                 i++;
+//             }
+//             if(req.query.id == books[i].id_book){
+//                 respuesta = books[i];
+//             } else {
+//                 respuesta = "No se encuentra el libro"
+//             }
+//         } else {
+//             respuesta = books
+//         }
+//     } else
+//         respuesta= {error:true, codigo:200, mensaje: "No existe el libro"}
+
+//     res.send(respuesta)
+// }
+function getBook(req,res){
     let respuesta;
-    if( books != null){
-        if(req.query.id != undefined){
-            let i = 0;
-            while(i < books.length && req.query.id != books[i].id_book){
-                i++;
-            }
-            if(req.query.id == books[i].id_book){
-                respuesta = books[i];
-            } else {
-                respuesta = "No se encuentra el libro"
-            }
-        } else {
-            respuesta = books
-        }
-    } else
-        respuesta= {error:true, codigo:200, mensaje: "No existe el libro"}
-
+    if (books != null){
+        respuesta = books
+    } else {
+        respuesta = {error:true, codigo:200, mensaje: "No existe el libro"}
+    }
     res.send(respuesta)
+    console.log(respuesta)
 }
-
 
 
 function postBook(req, res){
